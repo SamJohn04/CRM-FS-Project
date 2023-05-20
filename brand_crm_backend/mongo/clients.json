@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "64664e2de635b7b40fdb65e2"
+  },
+  "name": "Samuel John",
+  "email": "samtonofficial@gmail.com",
+  "phoneNumber": "7306199074",
+  "userIcon": null,
+  "clientHistory": {
+    "lastMessage": {
+      "$numberLong": "1684426276671"
+    },
+    "messages": {
+      "unread": [],
+      "read": []
+    }
+  },
+  "uID": 1
+},{
+  "_id": {
+    "$oid": "64668d156847714fc1065a56"
+  },
+  "name": "Sam",
+  "email": "samuel.j@as.c",
+  "phoneNumber": "1234567890",
+  "userIcon": null,
+  "clientHistory": {
+    "lastMessage": {
+      "$numberLong": "1684442382083"
+    },
+    "messages": {
+      "unread": [],
+      "read": []
+    }
+  },
+  "uID": 2
+},{
+  "_id": {
+    "$oid": "6468069b9b8bd0fe220697f7"
+  },
+  "name": "Null",
+  "email": "null@example.com",
+  "phoneNumber": "123141412",
+  "userIcon": null,
+  "clientHistory": {
+    "lastMessage": {
+      "$numberLong": "1684539027897"
+    },
+    "messages": {
+      "unread": [],
+      "read": []
+    }
+  },
+  "uID": 3
+},{
+  "_id": {
+    "$oid": "646807d89b8bd0fe220697f8"
+  },
+  "name": "Abca",
+  "email": "abcedac@gmail.in",
+  "phoneNumber": "12311235413",
+  "userIcon": null,
+  "clientHistory": {
+    "lastMessage": {
+      "$numberLong": "1684539344564"
+    },
+    "messages": {
+      "unread": [],
+      "read": []
+    }
+  },
+  "uID": 4
+},{
+  "_id": {
+    "$oid": "646808289b8bd0fe220697f9"
+  },
+  "name": "Tipu",
+  "email": "sultan@tipu.to",
+  "phoneNumber": "6767565645",
+  "userIcon": null,
+  "clientHistory": {
+    "lastMessage": {
+      "$numberLong": "1684539424028"
+    },
+    "messages": {
+      "unread": [],
+      "read": []
+    }
+  },
+  "uID": 5
+}]
