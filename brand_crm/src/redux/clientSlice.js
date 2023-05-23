@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { redirect } from "react-router-dom";
 
 
 const initialState = {
@@ -126,6 +127,10 @@ export const clientSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(addClient.pending, (state, action) => {
             state.loading=true;
+            state.userAlert = {
+                message: 'Adding..',
+                info: true,
+            }
         })
         .addCase(addClient.rejected, (state, action) => {
             state.userAlert = {
@@ -172,7 +177,6 @@ export const clientSlice = createSlice({
                 success: true,
                 message: 'Client deleted.'
             }
-            getClients()
         })
         .addCase(deleteClient.rejected, (state, action) => {
             state.loading = false;
