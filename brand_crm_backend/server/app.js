@@ -20,7 +20,7 @@ app.post('/addUser', (req, res) => {
         email: req.body.email,
         phoneNumber: req.body.phoneNumber,
         userIcon: req.body.userIcon ?? null,
-        clientHistory: {lastMessage: timeNow, messages: {unread:[], read: []}}
+        clientHistory: {lastMessage: timeNow, messages: []}
     }
     getId().then((val) => {
         clientInfo.uID = val;

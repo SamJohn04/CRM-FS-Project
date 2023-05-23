@@ -2,7 +2,7 @@ import { Box, Button, TextField } from "@mui/material";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { addMessage, updateUser } from "../redux/clientSlice";
+import { addMessage } from "../redux/clientSlice";
 
 export default function AddHistory() {
     const user = useSelector((state) => state.client.user)
