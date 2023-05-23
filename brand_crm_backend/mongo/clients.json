@@ -8,9 +8,16 @@
   "userIcon": null,
   "clientHistory": {
     "lastMessage": {
-      "$numberLong": "1684426276671"
+      "$numberLong": "1684838349048"
     },
-    "messages": []
+    "messages": [
+      {
+        "title": "Testing...",
+        "body": "Testiinggg\n\nHello World",
+        "linkURL": "https://github.com/SamJohn04/CRM/tree/main",
+        "linkText": "Github"
+      }
+    ]
   },
   "uID": 1
 },{
@@ -73,4 +80,19 @@
     "messages": []
   },
   "uID": 5
+},{
+  "_id": {
+    "$oid": "646d13c8e934abe202e980e0"
+  },
+  "name": "Trial",
+  "email": "trialbyfury@trial.com",
+  "phoneNumber": "1211313",
+  "userIcon": null,
+  "clientHistory": {
+    "lastMessage": {
+      "$numberLong": "1684870088088"
+    },
+    "messages": []
+  },
+  "uID": 6
 }]
