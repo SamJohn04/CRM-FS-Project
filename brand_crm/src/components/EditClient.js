@@ -9,10 +9,9 @@ export default function EditClient() {
     const phoneField = useRef()
     const user = useSelector((state) => state.client.user)
     const dispatch = useDispatch()
-    //const dispatch = useDispatch()
     return (
         <Box>
-            <form className="add-client-modal" action="http://localhost:8080/addUser" method="POST">
+            <form className="add-client-box" action="http://localhost:8080/addUser" method="POST">
                 <TextField label="Name" fullWidth type={"text"} inputRef={nameField} name="name" value={user.name} onChange={(e) => dispatch(setName(e.target.value))}/>
                 <TextField label="Email" fullWidth type={"email"} inputRef={emailField} name="email" value={user.email} onChange={(e) => dispatch(setEmail(e.target.value))}/>
                 <TextField label="Phone Number" fullWidth type={"number"} inputRef={phoneField} name="phoneNumber" value={user.phoneNumber} onChange={(e) => dispatch(setPhone(e.target.value))}/>

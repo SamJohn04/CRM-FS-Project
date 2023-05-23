@@ -13,7 +13,7 @@
   color: black;
 }
 
-.add-client-modal {
+.add-client-box {
   background-color: white;
   width: 90vw;
   max-width: 800px;
@@ -26,7 +26,7 @@
   gap: 1rem;
 }
 
-#modal-big {
+#box-big {
   background-color: white;
   width: 90vw;
   max-width: 800px;
@@ -36,7 +36,7 @@
   border-radius: 1rem;
 }
 
-#modal-small {
+#box-small {
   display: none;
 }
 
@@ -99,15 +99,6 @@
   overflow-y: auto;
 }
 
-.new-alert {
-  background-color: blueviolet;
-  height: 0.35rem;
-  width: 0.35rem;
-  border-radius: 50%;
-  position: absolute;
-  right: 0.5rem;
-}
-
 .add-button {
   position:relative;
   display: flex;
@@ -115,7 +106,7 @@
   margin: 0.5rem;
 }
 
-.null-modal {
+.null-box {
   background-color: white;
   padding: 2rem 3rem;
   border-radius: 1rem;
@@ -124,10 +115,10 @@
 }
 
 @media screen and (max-width: 600px){
-  #modal-big {
+  #box-big {
     display: none;
   }
-  #modal-small {
+  #box-small {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -146,7 +137,7 @@
     margin: 0.5rem;
   }
 
-  .add-client-modal {
+  .add-client-box {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-right: 1rem;
@@ -226,4 +217,28 @@
 
 .client-list::-webkit-scrollbar-thumb {
   border-radius: 10px;
+}
+
+.history-message {
+  background-color: #a3f7b544;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0.2rem;
+}
+
+@keyframes alert-in {
+  from {
+    top: -4rem;
+  }
+  to {
+    top: 4rem;
+  }
+}
+
+.user-alert {
+  position: fixed;
+  top: 4rem;
+  z-index: 10;
+  padding-left: 0.5rem;
+  animation: alert-in 0.5s;
 }

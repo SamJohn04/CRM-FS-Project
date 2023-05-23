@@ -39,6 +39,20 @@ app.post('/client/delete', (req, res) => {
 })
 
 app.post('/client/update', (req, res) => {
+    console.log(req.body.user)
+    updateClient(req.body.user).then((e) => {
+        console.log(e);
+        res.end();
+    }).catch(()=>res.end())
+})
+
+app.post('/client/message/add', (req, res) => {
+    if(req.body.user.clientHistory.messages) {
+        req.body.user.clientHistory.messages.push(req.body.message)
+    }
+    else
+    req.body.user.clientHistory.messages = [req.body.message]
+    req.body.user.clientHistory.lastMessage = Date.now()
     updateClient(req.body.user).then((e) => {
         console.log(e);
         res.end();

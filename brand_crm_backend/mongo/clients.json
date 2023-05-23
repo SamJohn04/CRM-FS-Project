@@ -10,10 +10,7 @@
     "lastMessage": {
       "$numberLong": "1684426276671"
     },
-    "messages": {
-      "unread": [],
-      "read": []
-    }
+    "messages": []
   },
   "uID": 1
 },{
@@ -28,10 +25,7 @@
     "lastMessage": {
       "$numberLong": "1684442382083"
     },
-    "messages": {
-      "unread": [],
-      "read": []
-    }
+    "messages": []
   },
   "uID": 2
 },{
@@ -46,10 +40,7 @@
     "lastMessage": {
       "$numberLong": "1684539027897"
     },
-    "messages": {
-      "unread": [],
-      "read": []
-    }
+    "messages": []
   },
   "uID": 3
 },{
@@ -64,10 +55,7 @@
     "lastMessage": {
       "$numberLong": "1684539344564"
     },
-    "messages": {
-      "unread": [],
-      "read": []
-    }
+    "messages": []
   },
   "uID": 4
 },{
@@ -82,10 +70,7 @@
     "lastMessage": {
       "$numberLong": "1684539424028"
     },
-    "messages": {
-      "unread": [],
-      "read": []
-    }
+    "messages": []
   },
   "uID": 5
 }]

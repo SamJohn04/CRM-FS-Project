@@ -104,7 +104,8 @@ const client = new MongoClient(uri, {
           $set: {
             name: user.name,
             phoneNumber: user.phoneNumber,
-            email: user.email
+            email: user.email,
+            clientHistory: user.clientHistory,
         }
       })
       await client.close()

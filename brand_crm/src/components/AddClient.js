@@ -10,7 +10,7 @@ export default function AddClient() {
     const dispatch = useDispatch()
     return (
         <Box>
-            <form className="add-client-modal" action="http://localhost:8080/addUser" method="POST">
+            <form className="add-client-box" action="http://localhost:8080/addUser" method="POST">
                 <TextField label="Name" fullWidth type={"text"} inputRef={nameField} name="name"/>
                 <TextField label="Email" fullWidth type={"email"} inputRef={emailField} name="email"/>
                 <TextField label="Phone Number" fullWidth type={"number"} inputRef={phoneField} name="phoneNumber"/>

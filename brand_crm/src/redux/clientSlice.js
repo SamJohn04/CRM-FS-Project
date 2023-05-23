@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
     users: [],
     user: {
@@ -8,9 +9,10 @@ const initialState = {
         userIcon: null,
         email: null,
         phoneNumber: null,
-        clientHistory: {lastMessage: null, messages: {unread:[], read: []}}
+        clientHistory: {lastMessage: null, messages: []}
     },
     loading: false,
+    userAlert: null
 }
 
 export const addClient = createAsyncThunk(
@@ -78,6 +80,25 @@ export const updateUser = createAsyncThunk(
     }
 )
 
+export const addMessage = createAsyncThunk(
+    'client/message/add',
+    async ({user, message}, thunkAPI) => {
+        const header =  new Headers()
+        header.append('Content-Type', 'application/json')
+        const response = await fetch("http://localhost:8080/client/message/add", {
+            method: 'POST',
+            headers: header,
+            body: JSON.stringify({
+                user,
+                message
+            }),
+            mode: 'cors',
+            cache: 'default',
+        })
+        console.log(response)
+    }
+)
+
 export const clientSlice = createSlice({
     name: 'client',
     initialState: initialState,
@@ -97,25 +118,35 @@ export const clientSlice = createSlice({
         },
         setEmail: (state, action) => {
             state.user.email = action.payload;
+        },
+        clearAlert: (state, action) => {
+            state.userAlert = null
         }
     },
     extraReducers: (builder) => {
         builder.addCase(addClient.pending, (state, action) => {
-            console.log('waiting...');
             state.loading=true;
         })
         .addCase(addClient.rejected, (state, action) => {
-            window.alert('Could not add...')
+            state.userAlert = {
+                message: 'Could not add client.',
+                success: false,
+            }
             console.log(action.error)
             state.loading = false;
         })
         .addCase(addClient.fulfilled, (state, action) => {
-            window.alert('Client added!')
-            console.log(action.payload);
+            state.userAlert = {
+                success: true,
+                message: 'Client Added successfully!'
+            }
             state.loading = false;
         })
         .addCase(getClients.pending, (state, action) => {
-            window.alert('Loading clients...')
+            state.userAlert = {
+                info: true,
+                message: 'Loading clients...'
+            }
             state.loading = true;
         })
         .addCase(getClients.fulfilled, (state, action) => {
@@ -127,33 +158,64 @@ export const clientSlice = createSlice({
         .addCase(getClients.rejected, (state, action) => {
             state.loading = false;
             console.log('Rejected', action.error)
-            window.alert('Something went wrong. Try again..')
+            state.userAlert = {
+                message: 'Something went wrong.. Try again!',
+                success: false,
+            }
         })
         .addCase(deleteClient.pending, (state, action) => {
             state.loading = true;
         })
         .addCase(deleteClient.fulfilled, (state, action) => {
             state.loading = false;
-            window.alert('Client deleted')
+            state.userAlert = {
+                success: true,
+                message: 'Client deleted.'
+            }
             getClients()
         })
         .addCase(deleteClient.rejected, (state, action) => {
             state.loading = false;
-            window.alert('Could not delete...')
+            state.userAlert = {
+                message: 'Could not delete...',
+                success: false,
+            }
         })
         .addCase(updateUser.fulfilled, (state, action) => {
             state.loading = false;
+            state.userAlert = {
+                success: true,
+                message: 'Client updated!'
+            }
         })
         .addCase(updateUser.rejected, (state, action) => {
             state.loading = false;
             console.log(action.error)
+            state.userAlert = {
+                message: 'Could not update...',
+                success: false,
+            }
         })
         .addCase(updateUser.pending, (state, action) => {
             state.loading = true;
         })
+        .addCase(addMessage.fulfilled, (state, action) => {
+            state.loading = false;
+            state.userAlert = {
+                success: true,
+                message: 'Message recorded.'
+            }
+        })
+        .addCase(addMessage.rejected, (state, action) => {
+            state.loading = false;
+            state.userAlert = {
+                message: 'Could not add message...',
+                success: false,
+            }
+        })
     }
 })
 
-export const { selectCard, setEmail, setName, setPhone } = clientSlice.actions
+export const { selectCard, setEmail, setName, setPhone, clearAlert } = clientSlice.actions
 
 export default clientSlice.reducer
