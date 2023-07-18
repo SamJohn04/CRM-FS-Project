@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const { addClient, getId, fetchClients, deleteClient, updateClient } = require('../mongo/connect')
+const { client } = require('./api/utility')
 
 const cors = require('cors')
 app.use(cors())
@@ -12,57 +12,30 @@ app.use(bodyParser.json())
 
 app.listen(8080, () => {console.log('connected! Hello World!');})
 
-app.post('/addUser', (req, res) => {
-    
-    const timeNow = Date.now()
-    const clientInfo = {
-        name: req.body.name,
-        email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        userIcon: req.body.userIcon ?? null,
-        clientHistory: {lastMessage: timeNow, messages: []}
-    }
-    getId().then((val) => {
-        clientInfo.uID = val;
-        addClient(clientInfo).then(() => res.end())
-    }).catch(
-        () => res.end()
-    )
+app.post('/client/add', (req, res) => {
+    client.add(req.body).then(() => res.end())
 })
 
 app.post('/client/delete', (req, res) => {
-    console.log(req.body)
-    deleteClient(req.body.uID).then((e) => {
-        console.log(e)
+    client.delete(req.body).then(() => {
         res.end();
     }).catch(() => res.end())
 })
 
 app.post('/client/update', (req, res) => {
-    console.log(req.body.user)
-    updateClient(req.body.user).then((e) => {
-        console.log(e);
+    client.update().then(() => {
         res.end();
     }).catch(()=>res.end())
 })
 
 app.post('/client/message/add', (req, res) => {
-    if(req.body.user.clientHistory.messages) {
-        req.body.user.clientHistory.messages.push(req.body.message)
-    }
-    else
-    req.body.user.clientHistory.messages = [req.body.message]
-    req.body.user.clientHistory.lastMessage = Date.now()
-    updateClient(req.body.user).then((e) => {
-        console.log(e);
+    client.message.add(req.body).then(() => {
         res.end();
     }).catch(()=>res.end())
 })
 
-app.get('/getUsers', (req, res) => {
-    fetchClients().then((clients) => {
-        res.json(clients);
-    }).catch(
-        (e) =>  {console.log(e); res.end()}
-    )
+app.get('/client', (req, res) => {
+        client.get()
+        .then((result) => res.json(result))
+        .catch(res.end)
 })

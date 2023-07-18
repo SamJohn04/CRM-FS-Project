@@ -20,7 +20,7 @@ export const addClient = createAsyncThunk(
     async ({name, email, phoneNumber}, thunkAPI) => {
         const header =  new Headers()
         header.append('Content-Type', 'application/json')
-        const response = await fetch('http://localhost:8080/addUser', {
+        const response = await fetch('http://localhost:8080/client/add', {
             method: 'POST',
             headers: header,
             body: JSON.stringify({
@@ -38,7 +38,7 @@ export const addClient = createAsyncThunk(
 export const getClients = createAsyncThunk(
     'client/get',
     async (thunkAPI) => {
-        const response = await fetch('http://localhost:8080/getUsers')
+        const response = await fetch('http://localhost:8080/client')
         return response.json();
     }
 )
@@ -46,7 +46,6 @@ export const getClients = createAsyncThunk(
 export const deleteClient = createAsyncThunk(
     'client/delete',
     async (uID, thunkAPI) => {
-        console.log(uID)
         const header =  new Headers()
         header.append('Content-Type', 'application/json')
         const response = await fetch("http://localhost:8080/client/delete", {
