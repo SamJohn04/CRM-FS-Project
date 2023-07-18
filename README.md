@@ -37,6 +37,10 @@ Step 2: Server
 
 > To run the server, use `node .\server\app.js`. PS: It is recommended to install [Nodemon](https://nodemon.io) using `npm nodemon` and run the server with `npx nodemon .\server\app.js`, to restart the server more easily.
 
+Step 3: MongoDB
+
+> MongoDB should be connected to `localhost:27017` as is convention. Sample data to import available in `brand_crm_backend/mongo/clients.json`
+
 ### Information: Packages used
 
 The project has been built primarily using [MongoDB](https://www.mongodb.com) and [ExpressJS](https://expressjs.com)
